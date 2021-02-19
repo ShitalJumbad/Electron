@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CPU Monitoring</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="./index.css">
+</head>
+<h1>Welcome Shital</h1>
+<body >
+    <h1>Hello World! Notification</h1>
+    <button type="button" name="button" onclick="doNotify()">Notify Me</button>
+    <script src="./render.js"></script>
+    <p>
+        We are using node <script>document.write(process.versions.node)</script>,
+        Chrome <script>document.write(process.versions.chrome)</script>,
+        and Electron <script>document.write(process.versions.electron)</script>.
+    </p>
+    <div class="box">
+        <span class="label">CPU (%) </span>
+        <span id="cpu"></span>
+    </div>
+    <div class="box">
+        <span class="label">Free Mem (%) </span>
+        <span id="mem"></span>
+    </div>
+    <div class="box">
+        <span class="label">Total Mem (GB) </span>
+        <span id="total mem"></span>
+    </div>
+    <script>
+        const electron = require('electron');
+        const ipcRenderer = electron.ipcRenderer;
+        
+        ipcRenderer.on('cpu',(event,data) => {
+            document.getElementById('cpu').innerHTML = data.toFixed(2);
+        });
+        ipcRenderer.on('mem',(event,data) => {
+            console.log('Mem Usage (%): '+ data);
+            document.getElementById('mem').innerHTML = data.toFixed(2);
+        });
+        ipcRenderer.on('total',(event,data) => {
+            console.log('Total Mem (GB): '+ data);
+            document.getElementById('total mem').innerHTML = data.toFixed(2);
+        });
+
+    </script>
+    
+</body>
+</html>
