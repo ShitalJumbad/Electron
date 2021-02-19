@@ -1,0 +1,59 @@
+{
+  "name": "electronApp",
+  "productName": "CPU Monitoring",
+  "version": "1.0.0",
+  "description": "Shows Memory Usage",
+  "main": "./src/main.js",
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
+    "npm-upgrade": "^2.0.4",
+    "os-utils": "0.0.14"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "electron": "^11.2.3",
+    "electron-builder": "^22.9.1"
+  },
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "styles": [
+    "./src/index.css"
+  ],
+  "keywords": [],
+  "author": "Shital",
+  "license": "ISC",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "electronApp"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}
