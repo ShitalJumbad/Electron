@@ -23,7 +23,10 @@ Notifications
         
    d. Add this to your main.js/index.js file (before create window is called)
         app.setAppUserModelId('com.electron.notifications')
-   e. Install yarn 
+   e. Move this ,
+    "electron-builder": "^22.9.1"
+    from dependencies to dev-dependencies
+   f. Install yarn 
         npm install -g yarn
-   f. Just enter yarn dist to build it 
+   g. Just enter yarn dist to build it 
         yarn dist
